@@ -1,2 +1,2 @@
 # pdc-ubp
-University course notes and exercises
+Blas Pascal University course notes and exercises
