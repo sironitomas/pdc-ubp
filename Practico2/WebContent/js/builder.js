@@ -96,33 +96,33 @@ function buildCards(categoria){
 				 		            "<div class=\"card\"> "+
 				 					"<img class=\"card-img-top\" src=\""+ arr[i]['imagen']  +"\" alt=\"Card image cap\">"+
 				 					"<div class=\"card-body\">"+
-				 						"<h5 class=\"card-title\">"+ arr[i]['name'] +"</h5>"+
+				 						"<h3 class=\"card-title\">"+ arr[i]['name'] +"</h3>"+
 				 						"<p class=\"card-text\">" + arr[i]['descripcion'] + "</p>"+
-				 						"<p class=\"card-text\">$" + arr[i]['precio'] + "</p>"+
+				 						"<h3 class=\"card-text\">$" + arr[i]['precio'] + "</h3>"+
 				 						"<form action=\"javascript:void(null)\" >"+
 				 							"<input type=\"hidden\" name=\"productPrice\" value =\""+ arr[i]['precio'] + "\"></input>"+
 				 							"<input type=\"hidden\" name=\"productId\" value =\""+ arr[i]['id'] + "\"></input>"+
-				 							"<input name=\"productQuantity\" type=\"number\" style=\"width: 50px;\" min=\"1\" max=\"18\" value=\"1\" ></input>" +
-				 							"<button class=\"btn btn-primary agregar\">Agregar</button>"+
+				 							"<input name=\"productQuantity\" type=\"number\" style=\"width: 50px;\" min=\"1\" max=\"18\" value=\"1\" right-margin=\"5\" ></input>" +
+				 							"<button class=\"btn btn-primary agregar\">Agregar al Carrito</button>"+
 				 						"</form>"+
 				 			   		"</div>"+
 				 				"</div>"+
 				 			  "</div>";
 				}
-			else{	
+			else {	
 				cards_html +="<div class=\"principal\">" +
 							       "<div class=\"card\"> "+
 		    	                   "<img class=\"card-img-top\" src=\"" +  arr[i]['imagen']  +"\" alt=\"Card image cap\">"+
 		    	                   "<div class=\"card-body\">"+
-		    	                     "<h5 class=\"card-title\">"+  arr[i]['name'] +"</h5>"+
+		    	                     "<h3 class=\"card-title\">"+  arr[i]['name'] +"</h3>"+
 		    	                     "<p class=\"card-text\">" +  arr[i]['descripcion'] + "</p>"+
-		    	                     "<p class=\"card-text\">$" +  arr[i]['precio'] + "</p>"+
+		    	                     "<h3 class=\"card-text\">$" +  arr[i]['precio'] + "</h3>"+
 		    	                     "<form action=\"javascript:void(null)\" >"+
 		    	                     	"<input type=\"hidden\" name=\"productPrice\" value =\""+  arr[i]['precio'] + "\"></input>"+
 		    	                     	"<input type=\"hidden\" name=\"productId\" value =\""+  arr[i]['id'] + "\"></input>"+
 		    	                     	"<input type=\"hidden\" name=\"productQuantity\" value =\""+  arr[i]["cantidad"] + "\"></input>"+
 		    	                     	"<label class=\"card-text\"><h5>Cantidad => "+ arr[i]["cantidad"] +"</h5></label>"+
-		    	                     	"<button class=\"btn btn-danger eliminar\">Eliminar</button>"+
+		    	                     	"<button class=\"btn btn-danger eliminar\">Eliminar del Carrito</button>"+
 		    	                     "</form>" +
 		    	                   "</div>"+
 		    	                  "</div>" +
@@ -184,7 +184,8 @@ function construirCardNueva (id){
 }
 
 jQuery(document).ready(function() {	
-	const productos ={
+	const productos =
+	{
 		    "data": [
 		        {
 		            "name": "Nike Air Max",
@@ -328,91 +329,7 @@ jQuery(document).ready(function() {
 		        }
 		    ]
 		}
-	const productos2 = {
-		    "data": [
-		        {
-		            "name": "Nike Air Max",
-		            "descripcion": "La nueva Zapatilla Gonew Tracker II te hace jugar mejor.1",
-		            "id": 1,
-		            "precio": 2000,
-		            "categoria": "Zapatillas",
-		            "subcategoria": "deportivas",
-		            "imagen": "https://s7d2.scene7.com/is/image/dkscdn/17NIKMRNSWFTGRYBLRNN_Grey_White_is",
-		            "cantidad":0	
-		        },
-		        {
-		            "name": "Nike Air Max",
-		            "descripcion": "La nueva Zapatilla Gonew Tracker II te hace jugar mejor.2",
-		            "id": 2,
-		            "precio": 2000,
-		            "categoria": "Zapatillas",
-		            "subcategoria": "deportivas",
-		            "imagen": "https://s7d2.scene7.com/is/image/dkscdn/17NIKMRNSWFTGRYBLRNN_Grey_White_is",
-		            "cantidad":0	
-		        },
-		        {
-		            "name": "Nike Air Max",
-		            "descripcion": "La nueva Zapatilla Gonew Tracker II te hace jugar mejor.3",
-		            "id": 3,
-		            "precio": 2000,
-		            "categoria": "Zapatillas",
-		            "subcategoria": "deportivas",
-		            "imagen": "https://s7d2.scene7.com/is/image/dkscdn/17NIKMRNSWFTGRYBLRNN_Grey_White_is",
-		            "cantidad":0	
-		        },
-		        {
-		            "name": "Nike Air Max",
-		            "descripcion": "La nueva Zapatilla Gonew Tracker II te hace jugar mejor.4",
-		            "id": 4,
-		            "precio": 2000,
-		            "categoria": "Zapatillas",
-		            "subcategoria": "deportivas",
-		            "imagen": "https://s7d2.scene7.com/is/image/dkscdn/17NIKMRNSWFTGRYBLRNN_Grey_White_is",
-		            "cantidad":0	
-		        },
-		        {
-		            "name": "Nike Air Max",
-		            "descripcion": "La nueva Zapatilla Gonew Tracker II te hace jugar mejor.5",
-		            "id": 5,
-		            "precio": 2000,
-		            "categoria": "Zapatillas",
-		            "subcategoria": "deportivas",
-		            "imagen": "https://s7d2.scene7.com/is/image/dkscdn/17NIKMRNSWFTGRYBLRNN_Grey_White_is",
-		            "cantidad":0	
-		        },
-		        {
-		            "name": "Nike Air Max",
-		            "descripcion": "La nueva Zapatilla Gonew Tracker II te hace jugar mejor.6",
-		            "id": 6,
-		            "precio": 2000,
-		            "categoria": "Zapatillas",
-		            "subcategoria": "deportivas",
-		            "imagen": "https://s7d2.scene7.com/is/image/dkscdn/17NIKMRNSWFTGRYBLRNN_Grey_White_is",
-		            "cantidad":0	
-		        },
-		        {
-		            "name": "Reloj Casio F-200W",
-		            "descripcion": "Te presentamos el nuevo Reloj Casio F-200W. Con él podrás tener en tu muñeca un reloj que posee las funciones que buscas. Cuenta con iluminación led y un diseño moderno y elegante.",
-		            "id": 7,
-		            "precio": 5000,
-		            "categoria": "Relojes",
-		            "subcategoria": "Casual",
-		            "imagen": "https://static.netshoes.com.ar/produtos/reloj-casio-aw-49h/55/112-0069-055/112-0069-055_zoom1.jpg?resize=1200:*",
-		            "cantidad":0
-		        },
-		        {
-		            "name": "Reloj Casio LQ-139AMV",
-		            "descripcion": "Para las mujeres que se manejan en un ambiente agitado, llega el Reloj Casio LQ-139AMV que por su peso es ideal para mujeres y su resistencia lo hace apto para estar expuesto a diferentes escenarios.",
-		            "id": 8,
-		            "precio": 3000,
-		            "categoria": "Relojes",
-		            "subcategoria": "Casual",
-		            "imagen": "https://static.netshoes.com.ar/produtos/reloj-casio-lq-139amv/18/112-0084-118/112-0084-118_zoom1.jpg?resize=1200:*",
-		            "cantidad":0
-		        }
-		    ]
-		}
-	
+
 	 if (typeof(Storage) !== "undefined") {
 		 localStorage.clear();
 		 if (localStorage.getItem('productos') === null) { 
