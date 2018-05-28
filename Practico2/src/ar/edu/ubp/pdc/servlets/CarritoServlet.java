@@ -24,7 +24,7 @@ public class CarritoServlet extends HttpServlet {
 		/**********************************************************
 		 *Metodo (rustico) para transformar tu carrito en un Array JSON.* 
 		 **********************************************************/
-		String accum = "[";
+		String accum = "{\"data\":[";
 		for(int i=0; i<cart.size() ;i++) {
 			String aux="";
 			if (i < cart.size()-1) {
@@ -42,7 +42,7 @@ public class CarritoServlet extends HttpServlet {
 				accum = accum + aux;
 				}
 		}
-		accum = accum + "]";
+		accum = accum + "]}";
 		return accum;
 	}
 
@@ -58,11 +58,12 @@ public class CarritoServlet extends HttpServlet {
 	        		        	
 	        	if(session.getAttribute("carrito")!= null) {
 	        		
+					@SuppressWarnings("unchecked")
 					List<Product> carrito = (List<Product>)session.getAttribute("carrito");
 					strCarrito =  toString(carrito) ;
 	        	
 	        	}else {
-	        		strCarrito = "[]";
+	        		strCarrito = "{\"data\":[]}";
 
 	        	}
 	        	out.println("{\"url\":" + strurl +"," + "\"carrito\":" + strCarrito +"}");
@@ -74,17 +75,18 @@ public class CarritoServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {//Borramos el producto al carrito.
 
-		 
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession(true);
 		
 		if(request.getParameter("DelProductId") != null && request.getParameter("DelProductId") != "") 
 		{
 		    int idProductoASerEliminado = Integer.parseInt(request.getParameter("DelProductId"));
+			@SuppressWarnings("unchecked")
 			List<Product> carrito = (List<Product>)session.getAttribute("carrito");
 			List<Product> nuevoCarrito = carrito.stream()
 												.filter(p -> p.getId()!= idProductoASerEliminado)
 												.collect(Collectors.toList());
+			session.removeAttribute("carrito");
 			session.setAttribute("carrito", nuevoCarrito);
 		}
 		else
@@ -100,7 +102,7 @@ public class CarritoServlet extends HttpServlet {
 			    product.setPrice(Integer.parseInt(request.getParameter("productPrice")));
                 
 			    if(session.getAttribute("carrito")== null) 
-			    {//Si no existe el carrito en la session lo creamos y le agregamos un producto.
+			    {
            
                 	List<Product> carrito = new ArrayList<Product>();
      		    	carrito.add(product);
@@ -108,8 +110,10 @@ public class CarritoServlet extends HttpServlet {
                 }
                 else 
                 {
-                	List<Product> carrito = (List<Product>)session.getAttribute("carrito");
+                	@SuppressWarnings("unchecked")
+					List<Product> carrito = (List<Product>)session.getAttribute("carrito");
                 	carrito.add(product);
+                	session.removeAttribute("carrito");
      		    	session.setAttribute("carrito",carrito);
                 	
                 }
